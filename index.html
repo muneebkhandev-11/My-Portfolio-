@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muneeb Khan | Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo">Muneeb<span>Khan</span></div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section id="hero" class="hero-section">
+      <div class="hero-container">
+        <div class="hero-text">
+          <h5>Welcome to my portfolio</h5>
+          <h1>Hi, I'm <span>Muneeb Khan</span></h1>
+
+          <div class="typing-wrapper">
+            <h3 class="typing-text"></h3>
+          </div>
+
+          <p>
+            Currently I am Class 10 student balancing Biology studies with a
+            passion for software development. Actively learning modern web
+            development at SMIT to build high-performance web applications.
+          </p>
+          <div class="hero-buttons">
+            <a href="#projects" class="btn primary-btn">View My Work</a>
+            <a href="#contact" class="btn secondary-btn">Let's Talk</a>
+          </div>
+        </div>
+        <div class="hero-img">
+          <img src="profile.png" alt="Muneeb Khan" />
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about-section reveal">
+      <h2>About Me</h2>
+      <div class="about-content">
+        <p>
+          I am a 17-year-old tech enthusiast fluent in
+          <strong>Pushto, Urdu, and English</strong>. Currently completing my
+          Matric, I plan to fully study into Computer Science for my higher
+          secondary studies. I love solving problems through clean code and
+          modern development standards.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills" class="skills-section reveal">
+      <h2>My Tech Stack</h2>
+      <div class="skills-grid">
+        <div class="skill-card active">
+          <i class="fab fa-html5"></i>
+          <h3>HTML5</h3>
+          <p>Completed</p>
+        </div>
+        <div class="skill-card active">
+          <i class="fab fa-css3-alt"></i>
+          <h3>CSS3</h3>
+          <p>Completed</p>
+        </div>
+        <div class="skill-card learning">
+          <i class="fab fa-js"></i>
+          <h3>JavaScript</h3>
+          <p>Learning Next</p>
+        </div>
+        <div class="skill-card learning">
+          <i class="fab fa-react"></i>
+          <h3>MERN Stack</h3>
+          <p>Future Roadmap</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects-section reveal">
+      <h2>Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>Villa Restoration Concept</h3>
+          <p>
+            A detailed 4-stage visual concept tracking a luxury villa
+            restoration using advanced AI workflows.
+          </p>
+          <a
+            href="https://github.com/muneebkhandev-11"
+            target="_blank"
+            class="project-link"
+            >View Repository <i class="fas fa-arrow-right"></i
+          ></a>
+        </div>
+        <div class="project-card">
+          <h3>Modern Landing Page</h3>
+          <p>
+            Clean HTML5 and CSS3 professional template built using standard
+            modern styling best practices.
+          </p>
+          <a
+            href="https://github.com/muneebkhandev-11"
+            target="_blank"
+            class="project-link"
+            >View Repository <i class="fas fa-arrow-right"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <h2>Get In Touch</h2>
+      <p>Feel free to reach out for collaborations or just a tech chat!</p>
+      <div class="social-links">
+        <a href="mailto:moneebkhandev4@gmail.com"
+          ><i class="fas fa-envelope"></i> Email</a
+        >
+        <a href="https://github.com/muneebkhandev-11" target="_blank"
+          ><i class="fab fa-github"></i> GitHub</a
+        >
+        <a href="https://linkedin.com/in/muneebkhandev" target="_blank"
+          ><i class="fab fa-linkedin"></i> LinkedIn</a
+        >
+      </div>
+      <p class="copyright">&copy; 2026 Muneeb Khan. All Rights Reserved.</p>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" title="Go to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+      // 1. JAVASCRIPT TYPING ANIMATION
+      const textElement = document.querySelector(".typing-text");
+      const words = [
+        "MERN Stack Developer.",
+        "Software Developer.",
+        "Web Enthusiast.",
+      ];
+      let wordIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+
+      function typeEffect() {
+        const currentWord = words[wordIndex];
+
+        if (isDeleting) {
+          textElement.textContent = currentWord.substring(0, charIndex - 1);
+          charIndex--;
+        } else {
+          textElement.textContent = currentWord.substring(0, charIndex + 1);
+          charIndex++;
+        }
+
+        let typeSpeed = isDeleting ? 50 : 100;
+
+        if (!isDeleting && charIndex === currentWord.length) {
+          typeSpeed = 1500; // Word complete hone par pause
+          isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          typeSpeed = 500; // agle word se pehle pause
+        }
+
+        setTimeout(typeEffect, typeSpeed);
+      }
+
+      // Run when page loads
+      document.addEventListener("DOMContentLoaded", () => {
+        if (textElement) typeEffect();
+      });
+
+      // 2. SCROLL REVEAL LOGIC
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+
+      const revealElements = document.querySelectorAll(".reveal");
+      revealElements.forEach((el) => observer.observe(el));
+
+      // 3. BACK TO TOP BUTTON LOGIC
+      const backToTopBtn = document.getElementById("backToTop");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.add("visible");
+        } else {
+          backToTopBtn.classList.remove("visible");
+        }
+      });
+
+      backToTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+    </script>
+  </body>
+</html>
