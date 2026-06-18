@@ -409,3 +409,10 @@ footer p {
   transform: translateY(-5px);
   box-shadow: 0px 6px 20px rgba(56, 189, 248, 0.6);
 }
+/* Email link ko clickable banane ke liye fixing */
+a[href^="mailto:"] {
+  position: relative !important;
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
